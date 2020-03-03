@@ -17,3 +17,20 @@ var countNegatives = function(grid) {
   
   return (grid.length * grid[0].length) - positiveNums;
 };
+
+
+const countNegatives = (grid) => {
+  let cLength = grid.length, rLength = grid[0].length, 
+            c = cLength - 1, r = 0, negCount = 0;
+  
+  while (c >= 0 && r < rLength) {
+      if (grid[c][r] < 0) {
+          c--;
+          negCount += rLength - r;
+      } else {
+          r++;
+      }
+  }
+  
+  return negCount;    
+}
