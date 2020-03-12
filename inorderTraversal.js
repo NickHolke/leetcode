@@ -13,3 +13,20 @@ const inorderTraversal = (root) => {
   
   return result;
 }
+
+const inorderTraversal = (root) => {
+  let result = [];
+
+  const innerRec = (node) => {
+    if (node === null) {
+      return;
+    }
+
+    node.left();
+    result.push(node.val)
+    node.right();
+  }
+
+  innerRec(root);
+  return result;
+}
