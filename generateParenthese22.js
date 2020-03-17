@@ -14,3 +14,24 @@ var generateParenthesis = function(n) {
   innerRec('', 0);
   return results;
 };
+
+const generateParenthesis = (n) => {
+  let results = [];
+  const innerRec = (str, left, right) => {
+      if (str.length === n * 2) {
+          results.push(str);
+          return;
+      }
+      
+      if (left < n) {
+          innerRec(str + '(', left + 1, right);
+      }
+      
+      if (right < left) {
+          innerRec(str + ')', left, right + 1);
+      }
+  }
+  
+  innerRec('', 0, 0);
+  return results;
+}
