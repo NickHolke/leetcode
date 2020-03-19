@@ -13,3 +13,20 @@ var productExceptSelf = function(nums) {
   
   return result;
 };
+
+const productExceptSelf = (nums) => {
+  let result = [];
+  let p = 1;
+  
+  for (let i = 0; i < nums.length; i++) {
+      result[i] = p;
+      p *= nums[i];
+  }
+  p = 1;
+  
+  for (let i = nums.length - 1; i >= 0; i--) {
+      result[i] = result[i] * p;
+      p = nums[i] * p;
+  }
+  return result;
+}
