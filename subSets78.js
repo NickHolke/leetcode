@@ -17,3 +17,32 @@ var subsets = function(nums) {
   innerRec([], nums);
   return result;
 };
+
+const subsets = (nums) => {
+  let result = [];
+  
+  const innerRec = (current, index) => {
+      result.push([...current]);
+      
+      for (let i = index; i < nums.length; i++) {
+          current.push(nums[i]);
+          innerRec(current, i + 1);
+          current.pop();
+      }
+  }
+  
+  innerRec([], 0);
+  return result;
+}
+
+const subsets = (nums) => {
+  let result = [[]];
+  nums.forEach((num) => {
+      let size = result.length;
+      for (let i = 0; i < size; i++) {
+          result.push([...result[i]]);
+          result[result.length - 1].push(num);
+      }
+  })
+  return result;
+}
